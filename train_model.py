@@ -13,14 +13,14 @@ df.columns = ['label', 'message']  # Rename columns
 # Convert categorical labels to numeric values
 df['label'] = df['label'].map({'ham': 0, 'spam': 1})
 
-# Assign features and labels
+# Assign features
 message = df['message']
 label = df['label']
 
 # Split data
 x_train, x_test, y_train, y_test = train_test_split(message, label, test_size=0.2, random_state=42)
 
-# Pipeline: Vectorizer + Classifier
+# Vectorizer + Classifier
 model = Pipeline([
     ('vectorizer', CountVectorizer()),
     ('classifier', MultinomialNB())
@@ -34,5 +34,7 @@ joblib.dump(model, './models/model.pkl')
 
 # Evaluate model
 y_pred = model.predict(x_test)
-print(f"Accuracy: {accuracy_score(y_test, y_pred):.2f}")
-print(f"Precision: {precision_score(y_test, y_pred):.2f}")
+
+# Print scores
+print(f"Accuracy score: {accuracy_score(y_test, y_pred):.2f}")
+print(f"Precision score: {precision_score(y_test, y_pred):.2f}")
