@@ -38,6 +38,8 @@ spam-detection-api/
 ---
 ## Setup Instructions
 
+*You can use Docker to build and run this project or follow the steps to setup the project on your machine.*
+
 ### 1. Clone the repo
 
 ```bash
